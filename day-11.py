@@ -1,9 +1,14 @@
 import numpy as np
 # Day 11 - Blackjack
 cards = int()
+pool = list(range(1,11)) + [10] * 3  # adds 4 tens, 1 as a ten, 1 as jack, 1 as queen, 1 as king
 def random_card():
     global cards
-    cards = np.random.randint(0,10)
+    global pool
+    cards = np.random.choice(pool)
+    pool.remove(cards)
+    print(pool)
+    
 
 u_cards = []
 u_result = int()
@@ -11,7 +16,8 @@ def set_u_cards():
     random_card()
     u_cards.append(cards)
     global u_result
-    u_result += cards 
+    u_result += cards
+
 c_cards = []
 c_result = int()
 def set_c_cards():
@@ -40,8 +46,8 @@ def winner_is():
             winner = "computer"
     elif u_result > 21:
         winner = "computer"
-    print(u_result, c_result, winner)
+    print(u_cards,u_result,c_cards, c_result, winner)
 
-# For now is fully random, work on adding 10 points 4 times
+# For now is fully random
 start()
 winner_is()
