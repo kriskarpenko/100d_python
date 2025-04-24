@@ -36,6 +36,11 @@ def set_winner():
 
 
 while user_guess != the_answer and user_tries != 0:
-    print(f"Oh oh, that's wrong\nYou have {user_tries} guesses left")
+    closeness = ""
+    if user_guess > the_answer:
+        closeness = "too high"
+    else:
+        closeness = "too low"
+    print(f"Oh oh, that's {closeness}\nYou have {user_tries} guesses left")
     set_user_guess()
 set_winner()
