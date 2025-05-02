@@ -15,6 +15,7 @@ class QuizBrain:
             print(f"Yay")
         else:
             print("Nay")
+        print(f"The correct answer was {self.correct_answer}")
         print(f"You're score is {self.u_score}/{self.question_index}")
         print("\n")
 
