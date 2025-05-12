@@ -31,9 +31,9 @@ class Snake():
 
 
     def move(self):
-        for seg_num in range(len(self.segments) - 1, 0, -1):
+        for seg_num in range(len(self.segments) - 1, 0, -1): # from, to,step
                 snake_position = self.segments[seg_num - 1].position()
-                self.segments[seg_num].goto(snake_position)
+                self.segments[seg_num].goto(snake_position) # current segment changes it's position to the position of the previous one
         self.head.forward(MOVE_DISTANCE)
 
     def up(self):
