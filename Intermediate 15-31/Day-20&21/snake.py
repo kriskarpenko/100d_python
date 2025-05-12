@@ -15,11 +15,20 @@ class Snake():
 
     def create_snake(self):
         for position in STARING_POSITIONS:
-            seg_item = turtle_module.Turtle(shape="square")
-            seg_item.penup()
-            seg_item.color("white")
-            seg_item.goto(position)
-            self.segments.append(seg_item)
+            self.add_segment(position)
+            
+
+    def add_segment(self, position):
+        seg_item = turtle_module.Turtle(shape="square")
+        seg_item.penup()
+        seg_item.color("white")
+        seg_item.goto(position)
+        self.segments.append(seg_item)
+
+    def extend(self):
+        last_position = self.segments[-1].position()
+        self.add_segment(last_position)
+
 
     def move(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
