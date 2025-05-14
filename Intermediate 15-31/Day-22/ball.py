@@ -1,17 +1,38 @@
 from turtle import Turtle
+import random
 
+UP = 90
+DOWN = 270
+RIGHT = 0
+LEFT = 180
+ANGLE = 45
 class Ball(Turtle):
     def __init__(self):
         super().__init__()
         self.shape("circle")
         self.color("white")
+        self.penup()
+        self.ricochet()
+
     
     def ricochet(self):
-        heading = self.heading
-        if heading <= 315:
-            new_heading = heading() + 45
-        else:
-            new_heading = (360 - heading()) + 45
+        heading = self.heading()
+        new_heading = 0
+        if heading == UP:  
+            new_heading = random.choice([DOWN + ANGLE, DOWN - ANGLE])
+        elif heading == DOWN:
+            new_heading = random.choice([UP + ANGLE, UP -  ANGLE])
+        elif heading == LEFT:
+            new_heading == random.choice([RIGHT - ANGLE, RIGHT + ANGLE]) 
+        elif heading == RIGHT:
+            new_heading = random.choice([LEFT - ANGLE, LEFT + ANGLE]) 
+        elif heading < 180:
+            new_heading = heading + random.randint(180, 269)
+        elif heading > 180:
+            new_heading = heading + random.randint(180, 269) - 360
+
+        print(new_heading)
+
         self.setheading(new_heading)
     
     def move(self):

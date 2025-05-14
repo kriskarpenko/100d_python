@@ -41,6 +41,13 @@ while game_on:
         time.sleep(speed)
         bot_paddle.down()
 
+    # Ball logic
+    if ball.distance(bot_paddle) < 30 or ball.distance(user_paddle) < 30 or ball.ycor() > 270 or ball.ycor() < -270:
+        ball.ricochet()
+        ball.move()
+        ball.move()
+    ball.move()
+
 
 screen.exitonclick()
 
