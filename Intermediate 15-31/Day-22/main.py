@@ -1,7 +1,8 @@
-from turtle import Screen
-from paddle import Paddle
-import time
 from ball import Ball
+from paddle import Paddle
+from score import Score
+import time
+from turtle import Screen
 
 game_on = True
 screen = Screen()
@@ -16,6 +17,7 @@ USER_X = -350
 bot_paddle = Paddle(BOT_X)
 user_paddle = Paddle(USER_X)
 ball = Ball()
+score = Score()
 
 direction = "up"
 def set_direction():
@@ -42,11 +44,17 @@ while game_on:
         bot_paddle.down()
 
     # Ball logic
+    ball.move()
     if ball.distance(bot_paddle) < 30 or ball.distance(user_paddle) < 30 or ball.ycor() > 270 or ball.ycor() < -270:
         ball.ricochet()
         ball.move()
         ball.move()
-    ball.move()
+
+    if ball.xcor() > 360 :
+        score.add()
+        ball.restart()
+    if ball.xcor() < -360:
+        ball.restart()
 
 
 screen.exitonclick()
