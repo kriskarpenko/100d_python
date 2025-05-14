@@ -12,19 +12,21 @@ class Score(Turtle):
         self.color("white")
         self.penup()
         self.hideturtle()
-        self.goto(0,270)
-        self.update()
-    
-    def update(self):
-        self.write(f"Score: {self.num}", align=ALIGNMENT, font=FONT_STYLE)
+        self.l_score = 0
+        self.r_score = 0
+        self.update_scoreboard()
 
-    def add(self):
+    def update_scoreboard(self):
         self.clear()
-        self.num += 1
-        self.update()
+        self.goto(-100, 200)
+        self.write(self.l_score, align="center", font=("Courier", 80, "normal"))
+        self.goto(100, 200)
+        self.write(self.r_score, align="center", font=("Courier", 80, "normal"))
 
-    def game_over(self):
-        self.clear()
-        self.teleport(0,0)
-        self.color("red")
-        self.write(f"Game Over! Your score is: {self.num}",align=ALIGNMENT, font=GAME_OVER_FON_STYLE)
+    def l_point(self):
+        self.l_score += 1
+        self.update_scoreboard()
+
+    def r_point(self):
+        self.r_score += 1
+        self.update_scoreboard()

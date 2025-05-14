@@ -45,15 +45,16 @@ while game_on:
 
     # Ball logic
     ball.move()
-    if ball.distance(bot_paddle) < 30 or ball.distance(user_paddle) < 30 or ball.ycor() > 270 or ball.ycor() < -270:
+    if (ball.distance(bot_paddle) < 30 or ball.distance(user_paddle) < 30 or ball.ycor() > 270 or ball.ycor() < -270) and (ball.xcor() < 350 or ball.xcor() > -350):
         ball.ricochet()
         ball.move()
         ball.move()
 
     if ball.xcor() > 360 :
-        score.add()
+        score.r_point()
         ball.restart()
     if ball.xcor() < -360:
+        score.l_point()
         ball.restart()
 
 

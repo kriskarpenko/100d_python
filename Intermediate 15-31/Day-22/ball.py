@@ -27,9 +27,9 @@ class Ball(Turtle):
             new_heading = random.choice([DOWN + ANGLE, DOWN - ANGLE])
         elif heading == DOWN:
             new_heading = random.choice([UP + ANGLE, UP -  ANGLE])
-        elif heading < 180:
+        elif heading < 100:
             new_heading = heading + random.randint(180, 269)
-        elif heading > 180:
+        elif heading > 100:
             new_heading = heading + random.randint(180, 269) - 360
 
         print(new_heading)
