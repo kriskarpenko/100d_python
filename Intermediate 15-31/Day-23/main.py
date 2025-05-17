@@ -8,7 +8,15 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
-game_is_on = True
-while game_is_on:
-    time.sleep(0.1)
+player = Player()
+
+screen.listen()
+screen.onkey(player.move, "Up")
+
+is_on = True
+while is_on:
+    speed = 0.1
+    time.sleep(speed)
     screen.update()
+
+
