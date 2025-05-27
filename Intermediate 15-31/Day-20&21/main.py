@@ -27,6 +27,10 @@ def game_over():
     score.game_over()
     game_on = False
 
+def restart():
+    score.reset_score()
+    snake.reset()
+
 while game_on:
     screen.update()
     speed = 0.11
@@ -40,12 +44,12 @@ while game_on:
         snake.extend()
     #  Detect collision with the wall
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
-        game_over()
+        restart()
     
     #  Detect collision with the snake body
     for part in snake.segments[2:]:
         if snake.head.distance(part) < 10:
-            game_over()
+            restart()
     
 
 
